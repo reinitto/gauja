@@ -1,0 +1,60 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  height: auto;
+  border-bottom: 2px double black;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navigation .navLink {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+section h2 {
+  display: block;
+  text-align: center;
+}
+
+.projectList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.projectList .projectItem {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px black solid;
+  margin: 10px;
+  padding: 10px;
+}
+
+.projectList .projectItem img {
+  max-width: 200px;
+}
+
+.projectList .projectItem hr {
+  width: 100%;
+}
