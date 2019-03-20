@@ -15,11 +15,16 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-bottom: 2px double black;
 }
 
 .navigation .navLink {
   display: inline-block;
   margin: 10px 20px;
+}
+
+.navigation .navLink a {
+  text-decoration: none;
 }
 
 section h2 {

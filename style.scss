@@ -11,9 +11,13 @@ html {
 .navigation {
   display: flex;
   justify-content: center;
+  border-bottom: 2px double black;
   .navLink {
     display: inline-block;
     margin: 10px 20px;
+    a {
+      text-decoration: none;
+    }
   }
 }
 
