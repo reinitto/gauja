@@ -178,6 +178,7 @@ section {
   transform: skew(-30deg, -4deg);
   opacity: 0.2;
   border: $border-style-double;
+  z-index: -1;
 }
 
 // section::before {
@@ -233,6 +234,8 @@ section {
   transform: skew(-30deg, -4deg);
   opacity: 0.2;
   border: $border-style-double;
+
+  z-index: -1;
 }
 
 .offeringContainer {

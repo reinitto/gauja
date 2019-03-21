@@ -163,6 +163,7 @@ section h2 {
           transform: skew(-30deg, -4deg);
   opacity: 0.2;
   border: 2px double black;
+  z-index: -1;
 }
 
 #keyOfferings::before {
@@ -190,6 +191,7 @@ section h2 {
           transform: skew(-30deg, -4deg);
   opacity: 0.2;
   border: 2px double black;
+  z-index: -1;
 }
 
 .offeringContainer {
