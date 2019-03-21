@@ -3,9 +3,36 @@ html {
   height: 100%;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  background-color: cornsilk;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
 .title {
+  position: relative;
   height: auto;
   border-bottom: 2px double black;
+  padding-left: 20%;
+}
+
+.title h1,
+.title p {
+  display: inline-block;
+}
+
+.title h1 {
+  font-size: 3em;
+}
+
+.title p {
+  font-style: italic;
+  font-size: 16px;
+  position: relative;
+  top: 1.5em;
+  right: 8%;
 }
 
 .navigation {
@@ -27,15 +54,29 @@ html {
   text-decoration: none;
 }
 
+section {
+  padding: 20px 0px;
+  position: relative;
+  width: 100%;
+}
+
 section h2 {
   display: block;
   text-align: center;
+  margin: 0;
+}
+
+.container {
+  width: 60%;
+  padding-left: 20%;
 }
 
 .projectList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .projectList .projectItem {
@@ -62,4 +103,68 @@ section h2 {
 
 .projectList .projectItem hr {
   width: 100%;
+}
+
+#about {
+  width: 100%;
+  background: mediumaquamarine;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  background: url("img/orange-triangle.png") no-repeat;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  background: url("img/bottom-right-triangle.png") no-repeat;
+  background-size: cover;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.offeringContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.offeringItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 300px;
+  margin: 0px 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.offeringItem i {
+  display: block;
+}
+
+.offeringItem h3 {
+  text-align: center;
 }
