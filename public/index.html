@@ -18,18 +18,20 @@
       <h1>Gauja Digital</h1>
       <p>for your every digital desire</p>
     </div>
-    <div class="navigation">
-      <div class="navLink">
-        <a href="#"><h4>Home</h4></a>
-      </div>
-      <div class="navLink">
-        <a href="#about"><h4>About</h4></a>
-      </div>
-      <div class="navLink">
-        <a href="#projects"><h4>Our projects</h4></a>
-      </div>
-      <div class="navLink">
-        <a href="#contact"><h4>Contact</h4></a>
+    <div class="container">
+      <div class="navigation">
+        <div class="navLink">
+          <a href="#"><h4>Home</h4></a>
+        </div>
+        <div class="navLink">
+          <a href="#about"><h4>About</h4></a>
+        </div>
+        <div class="navLink">
+          <a href="#projects"><h4>Our projects</h4></a>
+        </div>
+        <div class="navLink">
+          <a href="#contact"><h4>Contact</h4></a>
+        </div>
       </div>
     </div>
     <main>
@@ -42,12 +44,14 @@
             the Netherlands and nearshore. From concept design to development
             with agile best practices.
           </p>
-          <button>Contact us</button>
+          <a href="#contact"> Contact us</a>
           <ul>
             <li>Web development</li>
             <li>We will make your site up to date</li>
-            <li>Newest web practices</li>
             <li>Experiened and professional</li>
+            <li>Maximize brand visibility</li>
+            <li>Simplify cunsumer directed business</li>
+            <li>Seamless integration</li>
           </ul>
         </div>
       </section>
@@ -94,7 +98,35 @@
           </div>
         </div>
       </section>
+      <section id="contact">
+        <div class="container">
+          <h2>Contact Us</h2>
+          <div id="cm" class="contactSent ">
+            <i id="thumbs" class=" fas fa-thumbs-up fa-5x"></i>
+            <p id="formMessage"></p>
+          </div>
+          <div class="contactForm container">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="E-mail"
+              required
+            />
+            <textarea
+              id="message"
+              name="message"
+              cols="30"
+              rows="10"
+              placeholder="Your message..."
+              required
+            ></textarea>
+            <button id="send">Send!</button>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer>©2019 GaujaDigital! All rights reserved!</footer>
     <script src="app.js"></script>
   </body>
 </html>
