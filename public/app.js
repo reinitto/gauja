@@ -16,8 +16,7 @@ window.addEventListener("DOMContentLoaded", event => {
       img.src = path;
     });
 
-  //Set background images
-  let backgroundLinks = ["img/apple2-min.jpg", "img/apple3-min.jpg"];
+  //get every second section 1,3,5...
   const sections = [...document.getElementsByTagName("section")].filter(
     (section, i) => {
       if (i % 2 == 0) {
@@ -25,6 +24,8 @@ window.addEventListener("DOMContentLoaded", event => {
       }
     }
   );
+
+  //add ::before and ::after divs instead of using css pseudo-selectors
   for (let section of sections) {
     let bg = document.createElement("div"); //node to insert
     let after = document.createElement("div");
@@ -35,6 +36,8 @@ window.addEventListener("DOMContentLoaded", event => {
     section.insertBefore(after, section.lastChild.nextSibling);
   }
 
+  //Set background images
+  let backgroundLinks = ["img/apple2-min.jpg", "img/apple3-min.jpg"];
   //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
   let sectionColor1 = "rgba(244, 110, 66, 1)";
   let sectionColor2 = "rgba(255, 255, 0, 0.2)";
@@ -53,6 +56,7 @@ window.addEventListener("DOMContentLoaded", event => {
       }
     });
   });
+  let screens = [];
 
   //set screenshot images
   let screenshotLinks = [
@@ -60,11 +64,23 @@ window.addEventListener("DOMContentLoaded", event => {
     "img/screenshot2-min.png",
     "img/screenshot3-min.png",
     "img/screenshot4.png"
-  ].forEach(link => {
-    projectList.insertAdjacentHTML(
-      "beforeend",
-      ` <div class="projectItem"> <img src=${link} alt="project screenshot image" /> <hr /> <div class="projectDescription"><p>some project description</p></div> </div>`
-    );
+  ];
+  screenshotLinks.forEach(path => {
+    screens.push(checkImage(path));
+  });
+  screens.forEach(prom => {
+    prom.then(res => {
+      if (res.status == "ok") {
+        projectList.insertAdjacentHTML(
+          "beforeend",
+          ` <div class="projectItem"> <img src=${
+            res.path
+          } alt="project screenshot image" /> <hr /> <div class="projectDescription"><p>some project description</p></div> </div>`
+        );
+      } else {
+        return;
+      }
+    });
   });
 
   //Click handler for contact
