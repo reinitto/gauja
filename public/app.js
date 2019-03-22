@@ -7,10 +7,58 @@ window.addEventListener("DOMContentLoaded", event => {
   const sentMessage = document.querySelector("#cm");
   const thumbs = document.querySelector("#thumbs");
   const formMessage = document.querySelector("#formMessage");
+
+  const checkImage = path =>
+    new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve({ path, status: "ok" });
+      img.onerror = () => resolve({ path, status: "error" });
+      img.src = path;
+    });
+
+  //Set background images
+  let backgroundLinks = ["img/apple2-min.jpg", "img/apple3-min.jpg"];
+  const sections = [...document.getElementsByTagName("section")].filter(
+    (section, i) => {
+      if (i % 2 == 0) {
+        return section;
+      }
+    }
+  );
+  for (let section of sections) {
+    let bg = document.createElement("div"); //node to insert
+    let after = document.createElement("div");
+    after.className = "afterSection";
+    let className = "sectionBg";
+    bg.className = className;
+    section.insertBefore(bg, section.firstChild);
+    section.insertBefore(after, section.lastChild.nextSibling);
+  }
+
+  //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
+  let sectionColor1 = "rgba(244, 110, 66, 1)";
+  let sectionColor2 = "rgba(255, 255, 0, 0.2)";
+  let proms = [];
+  backgroundLinks.forEach(path => {
+    proms.push(checkImage(path));
+  });
+  proms.forEach((prom, i) => {
+    prom.then(res => {
+      if (res.status == "ok") {
+        sections[
+          i
+        ].firstChild.style.background = ` linear-gradient(45deg,${sectionColor1}, ${sectionColor2}),url("${
+          res.path
+        }") right/50% 100% no-repeat`;
+      }
+    });
+  });
+
+  //set screenshot images
   let screenshotLinks = [
-    "img/screenshot1.png",
-    "img/screenshot2.png",
-    "img/screenshot3.png",
+    "img/screenshot1-min.png",
+    "img/screenshot2-min.png",
+    "img/screenshot3-min.png",
     "img/screenshot4.png"
   ].forEach(link => {
     projectList.insertAdjacentHTML(
@@ -19,6 +67,7 @@ window.addEventListener("DOMContentLoaded", event => {
     );
   });
 
+  //Click handler for contact
   send.addEventListener("click", () => {
     const Url = "/sendEmail";
     const Data = {

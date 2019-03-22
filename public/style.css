@@ -9,6 +9,8 @@ body {
   background-color: cornsilk;
   font-size: 20px;
   line-height: 1.5;
+  background: -webkit-gradient(linear, left top, right top, from(grey), color-stop(20%, cornsilk), to(grey));
+  background: linear-gradient(90deg, grey 0%, cornsilk 20% 80%, grey);
 }
 
 h2 {
@@ -139,11 +141,10 @@ section h2 {
   border: 2px solid black;
 }
 
-#about::before {
+.sectionBg {
   content: "";
   position: absolute;
-  background: linear-gradient(45deg, #f46e42, rgba(255, 255, 0, 0.2)) no-repeat, url(img/apple2.jpg) no-repeat 100% 0%;
-  background-size: 100%, 50% 100%;
+  background: linear-gradient(45deg, #f46e42, rgba(255, 255, 0, 0.2)) no-repeat;
   top: 0;
   left: 0;
   z-index: -2;
@@ -152,7 +153,7 @@ section h2 {
   opacity: 0.9;
 }
 
-#about::after {
+.afterSection {
   content: "";
   position: absolute;
   background-color: black;
@@ -163,37 +164,9 @@ section h2 {
   -webkit-transform: skew(-30deg, -4deg);
           transform: skew(-30deg, -4deg);
   opacity: 0.5;
-  border: 2px double black;
+  border: 5px solid white;
   z-index: -1;
   mix-blend-mode: overlay;
-}
-
-#keyOfferings::before {
-  content: "";
-  position: absolute;
-  background: linear-gradient(45deg, #f46e42, rgba(255, 255, 0, 0.2)) no-repeat, url(img/apple3.jpg) no-repeat 100% 0%;
-  background-size: 50%, 50% 100%;
-  top: 0;
-  left: 0;
-  z-index: -2;
-  height: 100%;
-  width: 100%;
-  opacity: 0.9;
-}
-
-#keyOfferings::after {
-  content: "";
-  position: absolute;
-  background-color: cornsilk;
-  top: 0;
-  left: 0;
-  width: 94%;
-  height: 96%;
-  -webkit-transform: skew(-30deg, -4deg);
-          transform: skew(-30deg, -4deg);
-  opacity: 0.2;
-  border: 2px double black;
-  z-index: -1;
 }
 
 .offeringContainer {
@@ -209,7 +182,7 @@ section h2 {
           justify-content: center;
 }
 
-.offeringItem {
+.offeringContainer .offeringItem {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,11 +197,11 @@ section h2 {
           align-items: center;
 }
 
-.offeringItem i {
+.offeringContainer .offeringItem i {
   display: block;
 }
 
-.offeringItem h3 {
+.offeringContainer .offeringItem h3 {
   text-align: center;
   height: 70px;
 }
@@ -253,22 +226,28 @@ section h2 {
   display: none;
 }
 
-.contactSuccess {
+#contact .contactSuccess {
   position: absolute;
   top: 200px;
   width: 10%;
 }
 
-.contactSuccess i {
+#contact .contactSuccess i {
   color: #4bb543;
 }
 
-.contactFail {
+#contact .contactFail {
   position: absolute;
   top: 200px;
   width: 10%;
 }
 
-.contactFail i {
+#contact .contactFail i {
   color: #ff0000;
+}
+
+ul li {
+  padding: 10px;
+  margin: 10px 20px;
+  list-style: none;
 }
