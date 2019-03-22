@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", event => {
   }
 
   //Set background images
-  let backgroundLinks = ["img/apple2-min.jpg", "img/apple3-min.jpg"];
+  let backgroundLinks = ["img/apple2_min.jpg", "img/apple3_min.jpg"];
   //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
   let sectionColor1 = "rgba(244, 110, 66, 1)";
   let sectionColor2 = "rgba(255, 255, 0, 0.2)";
@@ -60,10 +60,10 @@ window.addEventListener("DOMContentLoaded", event => {
 
   //set screenshot images
   let screenshotLinks = [
-    "img/screenshot1-min.png",
-    "img/screenshot2-min.png",
-    "img/screenshot3-min.png",
-    "img/screenshot4.png"
+    "img/screenshot1_min.jpeg",
+    "img/screenshot2_min.jpeg",
+    "img/screenshot3_min.jpeg",
+    "img/screenshot4.jpeg"
   ];
   screenshotLinks.forEach(path => {
     screens.push(checkImage(path));
