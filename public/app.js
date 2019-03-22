@@ -60,10 +60,10 @@ window.addEventListener("DOMContentLoaded", event => {
 
   //set screenshot images
   let screenshotLinks = [
-    "img/screenshot1_min.jpeg",
-    "img/screenshot2_min.jpeg",
-    "img/screenshot3_min.jpeg",
-    "img/screenshot4.jpeg"
+    "img/screenshot1_min.jpg",
+    "img/screenshot2_min.jpg",
+    "img/screenshot3_min.jpg",
+    "img/screenshot4.jpg"
   ];
   screenshotLinks.forEach(path => {
     screens.push(checkImage(path));
