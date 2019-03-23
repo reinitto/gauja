@@ -19,28 +19,24 @@ h2 {
 }
 
 .title {
-  position: relative;
-  height: auto;
-  border-bottom: 2px double black;
-  padding-left: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.title h1,
-.title p {
+.logo {
+  padding-left: 10%;
+  padding-top: 10px;
+  width: 58%;
   display: inline-block;
 }
 
-.title h1 {
-  font-size: 4em;
-  font-weight: 600;
-}
-
-.title p {
-  font-style: italic;
-  font-size: 16px;
-  position: relative;
-  top: 1.5em;
-  right: 8%;
+#menu {
+  display: none;
+  padding: 10px;
 }
 
 .navigation {
@@ -50,6 +46,7 @@ h2 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-top: 2px solid black;
 }
 
 .navigation .navLink {
@@ -60,6 +57,17 @@ h2 {
 .navigation .navLink a {
   color: black;
   text-decoration: none;
+}
+
+.container {
+  width: 60%;
+  padding-left: 20%;
+}
+
+ul li {
+  padding: 10px;
+  margin: 10px 20px;
+  list-style-type: upper-roman;
 }
 
 section {
@@ -76,11 +84,6 @@ section h2 {
   margin: 0;
 }
 
-.container {
-  width: 60%;
-  padding-left: 20%;
-}
-
 #projects {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -93,6 +96,9 @@ section h2 {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .projectList .projectItem {
@@ -206,6 +212,12 @@ section h2 {
   height: 70px;
 }
 
+.offeringContainer .offeringItem p {
+  height: 150px;
+  overflow: hidden;
+  text-align: center;
+}
+
 #contact .contactForm {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,8 +258,93 @@ section h2 {
   color: #ff0000;
 }
 
-ul li {
-  padding: 10px;
-  margin: 10px 20px;
-  list-style: none;
+.aboutSub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.aboutSub h3 {
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  #menu {
+    display: inline;
+  }
+  .navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .navigation .navLink {
+    display: inline-block;
+    margin: 10px 20px;
+    border: 2px solid black;
+  }
+  .navigation .navLink a {
+    color: black;
+    text-decoration: none;
+  }
+  .navigation .navLink a h4 {
+    text-align: center;
+  }
+  #about .container p {
+    display: none;
+  }
+  #about .container .aboutSub {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #about .container .list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .hidden {
+    position: absolute;
+    visibility: hidden;
+  }
+  #keyOfferings .offeringContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #keyOfferings .offeringContainer .offeringItem {
+    height: auto;
+  }
+  #keyOfferings .offeringContainer .offeringItem p {
+    height: 150px;
+    overflow: hidden;
+    margin: 0px;
+  }
+  #keyOfferings .offeringContainer .offeringItem h3 {
+    margin: 0px;
+  }
+  .expand {
+    height: auto;
+  }
+  .container {
+    width: 80%;
+    padding-left: 10%;
+  }
 }

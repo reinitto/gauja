@@ -7,6 +7,8 @@ window.addEventListener("DOMContentLoaded", event => {
   const sentMessage = document.querySelector("#cm");
   const thumbs = document.querySelector("#thumbs");
   const formMessage = document.querySelector("#formMessage");
+  const menu = document.getElementById("menu");
+  const navLinks = document.getElementsByClassName("navLink");
 
   const checkImage = path =>
     new Promise(resolve => {
@@ -37,25 +39,27 @@ window.addEventListener("DOMContentLoaded", event => {
   }
 
   //Set background images
-  let backgroundLinks = ["img/apple2_min.jpg", "img/apple3_min.jpg"];
-  //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
-  let sectionColor1 = "rgba(244, 110, 66, 1)";
-  let sectionColor2 = "rgba(255, 255, 0, 0.2)";
-  let proms = [];
-  backgroundLinks.forEach(path => {
-    proms.push(checkImage(path));
-  });
-  proms.forEach((prom, i) => {
-    prom.then(res => {
-      if (res.status == "ok") {
-        sections[
-          i
-        ].firstChild.style.background = ` linear-gradient(45deg,${sectionColor1}, ${sectionColor2}),url("${
-          res.path
-        }") right/50% 100% no-repeat`;
-      }
+  if (document.documentElement.clientWidth >= 1024) {
+    let backgroundLinks = ["img/apple2_min.jpg", "img/apple3_min.jpg"];
+    //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
+    let sectionColor1 = "rgba(244, 110, 66, 1)";
+    let sectionColor2 = "rgba(255, 255, 0, 0.2)";
+    let proms = [];
+    backgroundLinks.forEach(path => {
+      proms.push(checkImage(path));
     });
-  });
+    proms.forEach((prom, i) => {
+      prom.then(res => {
+        if (res.status == "ok") {
+          sections[
+            i
+          ].firstChild.style.background = ` linear-gradient(45deg,${sectionColor1}, ${sectionColor2}),url("${
+            res.path
+          }") right/50% 100% no-repeat`;
+        }
+      });
+    });
+  }
   let screens = [];
 
   //set screenshot images
@@ -124,5 +128,35 @@ window.addEventListener("DOMContentLoaded", event => {
       sentMessage.classList.remove("contactSuccess");
       sentMessage.classList.add("contactSent");
     }, 2500);
+  });
+
+  // toggle menu
+  const toggleMenu = () => {
+    [...navLinks].forEach(navLink => {
+      navLink.classList.toggle("hidden");
+    });
+  };
+  [...navLinks].forEach(navLink => {
+    navLink.addEventListener("click", () => {
+      toggleMenu();
+    });
+  });
+  menu.addEventListener("click", () => {
+    toggleMenu();
+  });
+
+  //Toggle Read more
+  const readMore = document.querySelectorAll(".readMore");
+  [...readMore].forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      let p = this.previousElementSibling;
+      console.log("this.text:", this.text);
+      console.log("prev.sib:", p);
+      if (p.style.height != "auto") p.style.height = "auto";
+      else p.style.height = 20 * 1.5 * 5 + "px";
+      if (this.text == "Read more") this.text = "Read less";
+      else this.text = "Read more";
+    });
   });
 });
