@@ -151,8 +151,6 @@ window.addEventListener("DOMContentLoaded", event => {
     anchor.addEventListener("click", function(e) {
       e.preventDefault();
       let p = this.previousElementSibling;
-      console.log("this.text:", this.text);
-      console.log("prev.sib:", p);
       if (p.style.height != "auto") p.style.height = "auto";
       else p.style.height = 20 * 1.5 * 5 + "px";
       if (this.text == "Read more") this.text = "Read less";
