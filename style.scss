@@ -29,7 +29,7 @@ body {
   background: linear-gradient(
     90deg,
     $color-bg-secondary 0%,
-    $color-bg-primary 20% 80%,
+    rgba(244, 222, 66, 0.5) 20% 80%,
     $color-bg-secondary
   );
 }
@@ -42,6 +42,7 @@ h2 {
 .title {
   display: flex;
   align-items: center;
+  border-bottom: $border-style-single;
 }
 
 .logo {
@@ -59,15 +60,34 @@ h2 {
 .navigation {
   display: flex;
   justify-content: center;
-  border-top: $border-style-single;
+
   .navLink {
     display: inline-block;
     margin: $margin;
-    a {
-      color: black;
-      text-decoration: none;
-    }
   }
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  h4 {
+    text-align: center;
+  }
+}
+
+.fixed {
+  position: fixed;
+  height: auto;
+  width: 100%;
+  flex-direction: row;
+  top: 0;
+  background: linear-gradient(
+    90deg,
+    grey 0%,
+    rgba(244, 222, 66, 1) 20% 80%,
+    grey
+  );
+  z-index: 1;
+  border-bottom: $border-style-single;
 }
 
 .container {
@@ -147,8 +167,6 @@ section {
       $color-section-secondary
     )
     no-repeat;
-  //   url(img/apple2-min.jpg) no-repeat 100% 0%;
-  // background-size: 100%, 50% 100%;
   top: 0;
   left: 0;
   z-index: -2;
@@ -232,7 +250,6 @@ section {
     }
   }
 }
-
 .aboutSub {
   display: flex;
   flex-direction: row;
@@ -243,6 +260,18 @@ section {
   }
 }
 
+.list {
+  div {
+    background-color: rgba(254, 255, 33, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
+
+    ul {
+      padding-inline-start: 20px;
+    }
+  }
+}
 @media only screen and (max-width: 767px) {
   #menu {
     display: inline-block;
@@ -252,6 +281,7 @@ section {
   .navigation {
     display: flex;
     flex-direction: column;
+    border-bottom: none;
     .navLink {
       display: inline-block;
       margin: $margin;
@@ -266,6 +296,7 @@ section {
     }
   }
   #about {
+    border-top: none;
     .container {
       p {
         display: none;
@@ -275,6 +306,16 @@ section {
       }
       .list {
         display: flex;
+        div {
+          background-color: rgba(254, 255, 33, 0.3);
+          border-radius: 5px;
+          margin: 10px;
+          font-size: 16px;
+
+          ul {
+            padding-inline-start: 20px;
+          }
+        }
       }
     }
   }

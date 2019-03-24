@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", event => {
-  console.log("DOM fully loaded and parsed");
   const projectList = document.querySelector(".projectList");
   const send = document.querySelector("#send");
   const email = document.querySelector("#email");
@@ -9,7 +8,11 @@ window.addEventListener("DOMContentLoaded", event => {
   const formMessage = document.querySelector("#formMessage");
   const menu = document.getElementById("menu");
   const navLinks = document.getElementsByClassName("navLink");
-
+  const navigation = document.querySelector(".navigation");
+  const title = document.querySelector(".title");
+  const navHolder = document.querySelector("#navHolder");
+  const sectionColor1 = "rgba(244, 222, 66, 0.7)";
+  const sectionColor2 = "rgba(255, 255, 0, 0.2)";
   const checkImage = path =>
     new Promise(resolve => {
       const img = new Image();
@@ -17,6 +20,19 @@ window.addEventListener("DOMContentLoaded", event => {
       img.onerror = () => resolve({ path, status: "error" });
       img.src = path;
     });
+
+  //Checks wether or not an element is fully in view
+  function isScrolledIntoView(el) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+
+    // Only completely visible elements return true:
+    var isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
+    // Partially visible elements return true:
+    isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
+  }
 
   //get every second section 1,3,5...
   const sections = [...document.getElementsByTagName("section")].filter(
@@ -42,8 +58,7 @@ window.addEventListener("DOMContentLoaded", event => {
   if (document.documentElement.clientWidth >= 1024) {
     let backgroundLinks = ["img/apple2_min.jpg", "img/apple3_min.jpg"];
     //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
-    let sectionColor1 = "rgba(244, 110, 66, 1)";
-    let sectionColor2 = "rgba(255, 255, 0, 0.2)";
+
     let proms = [];
     backgroundLinks.forEach(path => {
       proms.push(checkImage(path));
@@ -99,7 +114,7 @@ window.addEventListener("DOMContentLoaded", event => {
       body: JSON.stringify(Data),
       headers: { "content-type": "application/json; charset=UTF-8" }
     };
-
+    //Show success or fail message.
     fetch(Url, params)
       .then(res => res.json())
       .then(res => {
@@ -156,5 +171,39 @@ window.addEventListener("DOMContentLoaded", event => {
       if (this.text == "Read more") this.text = "Read less";
       else this.text = "Read more";
     });
+  });
+  window.addEventListener("scroll", () => {
+    if (document.documentElement.clientWidth >= 767) {
+      if (!isScrolledIntoView(title)) {
+        if ([...navigation.classList].includes("fixed")) {
+        } else {
+          navigation.classList.toggle("fixed");
+          //add placeholder div for when nav is not on top
+          navHolder.style.height =
+            navigation.getBoundingClientRect().height + "px";
+          navHolder.style.width = "100%";
+        }
+      } else {
+        navigation.classList.remove("fixed");
+        navHolder.style.height = 0 + "px";
+        navHolder.style.width = "0";
+      }
+    } else {
+      if (
+        document.body.scrollTop > 0 ||
+        document.documentElement.scrollTop > 0
+      ) {
+        title.classList.add("fixed");
+        navigation.classList.add("fixed");
+        if (document.documentElement.clientWidth <= 767) {
+          navigation.style.top =
+            Math.floor(title.getBoundingClientRect().height) + "px";
+        }
+      } else {
+        title.classList.remove("fixed");
+        navigation.classList.remove("fixed");
+        navigation.removeAttribute = "top";
+      }
+    }
   });
 });
