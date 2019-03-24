@@ -35,16 +35,15 @@ window.addEventListener("DOMContentLoaded", event => {
   }
 
   //get every second section 1,3,5...
-  const sections = [...document.getElementsByTagName("section")].filter(
-    (section, i) => {
-      if (i % 2 == 0) {
-        return section;
-      }
+  const sections = [...document.getElementsByTagName("section")];
+  const oddSections = sections.filter((section, i) => {
+    if (i % 2 == 0) {
+      return section;
     }
-  );
+  });
 
   //add ::before and ::after divs instead of using css pseudo-selectors
-  for (let section of sections) {
+  for (let section of oddSections) {
     let bg = document.createElement("div"); //node to insert
     let after = document.createElement("div");
     after.className = "afterSection";
@@ -66,7 +65,7 @@ window.addEventListener("DOMContentLoaded", event => {
     proms.forEach((prom, i) => {
       prom.then(res => {
         if (res.status == "ok") {
-          sections[
+          oddSections[
             i
           ].firstChild.style.background = ` linear-gradient(45deg,${sectionColor1}, ${sectionColor2}),url("${
             res.path
@@ -172,21 +171,17 @@ window.addEventListener("DOMContentLoaded", event => {
       else this.text = "Read more";
     });
   });
+
+  // Fixed navbar
   window.addEventListener("scroll", () => {
     if (document.documentElement.clientWidth >= 767) {
       if (!isScrolledIntoView(title)) {
         if ([...navigation.classList].includes("fixed")) {
         } else {
           navigation.classList.toggle("fixed");
-          //add placeholder div for when nav is not on top
-          navHolder.style.height =
-            navigation.getBoundingClientRect().height + "px";
-          navHolder.style.width = "100%";
         }
       } else {
         navigation.classList.remove("fixed");
-        navHolder.style.height = 0 + "px";
-        navHolder.style.width = "0";
       }
     } else {
       if (
@@ -205,5 +200,23 @@ window.addEventListener("DOMContentLoaded", event => {
         navigation.removeAttribute = "top";
       }
     }
+  });
+
+  //add anchor for each section
+
+  sections.forEach(section => {
+    let a = document.createElement("a");
+    a.id = section.getAttribute("data-name");
+    a.style.display = "block";
+    a.style.visibility = "hidden";
+    a.style.position = "relative";
+    if (document.documentElement.clientWidth <= 767) {
+      a.style.top = Math.ceil(0 - title.getBoundingClientRect().height) + "px";
+    } else {
+      a.style.top =
+        Math.ceil(0 - navigation.getBoundingClientRect().height) + "px";
+    }
+    let cont = section.querySelector(".container");
+    section.insertBefore(a, cont);
   });
 });
