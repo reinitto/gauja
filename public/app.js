@@ -190,10 +190,6 @@ window.addEventListener("DOMContentLoaded", event => {
       ) {
         title.classList.add("fixed");
         navigation.classList.add("fixed");
-        if (document.documentElement.clientWidth <= 767) {
-          navigation.style.top =
-            Math.floor(title.getBoundingClientRect().height) + "px";
-        }
       } else {
         title.classList.remove("fixed");
         navigation.classList.remove("fixed");
