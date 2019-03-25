@@ -236,8 +236,44 @@ window.addEventListener("DOMContentLoaded", event => {
         navigation.removeAttribute = "top";
       }
     }
+    //check which section is in view
+    let isInView = [];
+    sections.forEach(section => {
+      let winH = window.innerHeight;
+      var rect = section.getBoundingClientRect();
+      var elemY = rect.y;
+      var elemH = rect.height;
+      if (elemY > 0) {
+        if (winH - elemY < 0) {
+          //too far down
+        } else {
+          //in view
+          isInView.push(section);
+        }
+      } else {
+        if (elemH + elemY > 0) {
+          //is visible
+          isInView.push(section);
+        }
+      }
+      //&& elemBottom <= window.innerHeight;
+      // if (elemY > 0 && elemY < winH && elemY > winH / 2) {
+      //   console.log("in view?:", section.id);
+      // }
+    });
+    //     remove active class from other navlinks
+    let sectionName = isInView[isInView.length - 1].getAttribute("data-name");
+    [...navLinks].forEach(navLink => {
+      console.log(navLink.firstElementChild.textContent == sectionName);
+      navLink.firstElementChild.style.color = "#555";
+      if (navLink.firstElementChild.textContent == sectionName) {
+        navLink.firstElementChild.style.color = "black";
+        // SHow black underline
+        console.log("elch", navLink.firstElementChild.childNodes);
+      }
+    });
+    console.log(sectionName);
   });
-
   //add anchor for each section based on fixed nav height
 
   sections.forEach(section => {
