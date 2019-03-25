@@ -10,9 +10,11 @@ window.addEventListener("DOMContentLoaded", event => {
   const navLinks = document.getElementsByClassName("navLink");
   const navigation = document.querySelector(".navigation");
   const title = document.querySelector(".title");
+  const aboutSection = document.querySelector("#aboutSection");
   const navHolder = document.querySelector("#navHolder");
   const sectionColor1 = "rgba(244, 222, 66, 0.7)";
   const sectionColor2 = "rgba(255, 255, 0, 0.2)";
+  const topBg = document.querySelector(".topBg");
   const checkImage = path =>
     new Promise(resolve => {
       const img = new Image();
@@ -53,30 +55,52 @@ window.addEventListener("DOMContentLoaded", event => {
     section.insertBefore(after, section.lastChild.nextSibling);
   }
 
-  //Set background images
-  if (document.documentElement.clientWidth >= 1024) {
-    let backgroundLinks = ["img/apple2_min.jpg", "img/apple3_min.jpg"];
-    //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
+  //set titlebg
+  checkImage("img/clouds.jpg").then(res => {
+    if (res.status == "ok") {
+      title.style.background = `url("${res.path}") 0% 0%/cover no-repeat`;
+    }
+  });
+  //set navbar BG
+  checkImage("img/navbarBg.jpg").then(res => {
+    if (res.status == "ok") {
+      navigation.style.background = `url("${res.path}") 0% 0%/cover no-repeat`;
+    }
+  });
 
-    let proms = [];
-    backgroundLinks.forEach(path => {
-      proms.push(checkImage(path));
-    });
-    proms.forEach((prom, i) => {
-      prom.then(res => {
-        if (res.status == "ok") {
-          oddSections[
-            i
-          ].firstChild.style.background = ` linear-gradient(45deg,${sectionColor1}, ${sectionColor2}),url("${
-            res.path
-          }") right/50% 100% no-repeat`;
-        }
-      });
-    });
-  }
-  let screens = [];
+  //set about BG
+  checkImage("img/aboutBg.jpg").then(res => {
+    if (res.status == "ok") {
+      aboutSection.style.background = `url("${
+        res.path
+      }") 0% 0%/cover no-repeat`;
+    }
+  });
+
+  // //Set background images
+  // if (document.documentElement.clientWidth >= 1024) {
+  //   let backgroundLinks = ["img/apple2_min.jpg", "img/apple3_min.jpg"];
+  //   //rgba(244, 110, 66, 1), rgba(255, 255, 0, 0.2)
+
+  //   let proms = [];
+  //   backgroundLinks.forEach(path => {
+  //     proms.push(checkImage(path));
+  //   });
+  //   proms.forEach((prom, i) => {
+  //     prom.then(res => {
+  //       if (res.status == "ok") {
+  //         oddSections[
+  //           i
+  //         ].firstChild.style.background = ` linear-gradient(45deg,${sectionColor1}, ${sectionColor2}),url("${
+  //           res.path
+  //         }") right/50% 100% no-repeat`;
+  //       }
+  //     });
+  //   });
+  // }
 
   //set screenshot images
+  let screens = [];
   let screenshotLinks = [
     "img/screenshot1_min.jpg",
     "img/screenshot2_min.jpg",
@@ -146,12 +170,28 @@ window.addEventListener("DOMContentLoaded", event => {
 
   // toggle menu
   const toggleMenu = () => {
+    navHolder.classList.toggle("hidden");
     [...navLinks].forEach(navLink => {
       navLink.classList.toggle("hidden");
     });
   };
+  //Add onclik scroll to right section
   [...navLinks].forEach(navLink => {
-    navLink.addEventListener("click", () => {
+    navLink.addEventListener("click", function() {
+      let anchorId,
+        target,
+        sectionName = this.querySelector("h4").textContent;
+      if (sectionName == "home") {
+        target = document.querySelector("html");
+      } else {
+        anchorId = "#" + sectionName;
+        target = document.querySelector(anchorId);
+      }
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
       toggleMenu();
     });
   });
@@ -198,7 +238,7 @@ window.addEventListener("DOMContentLoaded", event => {
     }
   });
 
-  //add anchor for each section
+  //add anchor for each section based on fixed nav height
 
   sections.forEach(section => {
     let a = document.createElement("a");
@@ -206,6 +246,7 @@ window.addEventListener("DOMContentLoaded", event => {
     a.style.display = "block";
     a.style.visibility = "hidden";
     a.style.position = "relative";
+    a.style.height = "1px";
     if (document.documentElement.clientWidth <= 767) {
       a.style.top = Math.ceil(0 - title.getBoundingClientRect().height) + "px";
     } else {
@@ -215,4 +256,8 @@ window.addEventListener("DOMContentLoaded", event => {
     let cont = section.querySelector(".container");
     section.insertBefore(a, cont);
   });
+
+  // $('.scroll-bttn').click(function () {
+  //   $('body,html').stop(true, false).animate({scrollTop: $('#' + $(this).attr('href').split('#')[1] + '-content').offset().top - $('.menu').height() - 25},750);
+  //   });
 });

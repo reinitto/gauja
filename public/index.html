@@ -15,34 +15,43 @@
     <title>Gauja Digital</title>
   </head>
   <body>
-    <div class="title">
-      <div class="logo">
-        <object type="image/svg+xml" data="img/logo-01.svg"> </object>
-      </div>
-      <div id="menu">
-        <i class="fas fa-bars fa-2x"></i>
-      </div>
-    </div>
-    <div id="navHolder">
-      <div class="navigation">
-        <a href="#" class="navLink hidden">
-          <h4>Home</h4>
-        </a>
-        <a href="#about" class="navLink hidden">
-          <h4>About</h4>
-        </a>
-        <a href="#services" class="navLink hidden">
-          <h4>Services</h4>
-        </a>
-        <a href="#projects" class="navLink hidden">
-          <h4>Projects</h4>
-        </a>
-        <a href="#contact" class="navLink hidden">
-          <h4>Contact us</h4>
-        </a>
-      </div>
-    </div>
     <main>
+      <div class="title">
+        <div class="logo">
+          <object type="image/svg+xml" data="img/logo-01.svg"> </object>
+        </div>
+        <div id="menu">
+          <i class="fas fa-bars fa-2x"></i>
+        </div>
+      </div>
+      <div id="navHolder" class=" hidden">
+        <div class="navigation">
+          <ul>
+            <li class="navLink hidden"><h4>home</h4></li>
+            <li class="navLink hidden"><h4>about</h4></li>
+            <li class="navLink hidden"><h4>services</h4></li>
+            <li class="navLink hidden"><h4>projects</h4></li>
+            <li class="navLink hidden"><h4>contact</h4></li>
+          </ul>
+          <!--           
+          <a href="#" class="navLink hidden">
+            <h4>Home</h4>
+          </a>
+          <a href="#about" class="navLink hidden">
+            <h4>About</h4>
+          </a>
+          <a href="#services" class="navLink hidden">
+            <h4>Services</h4>
+          </a>
+          <a href="#projects" class="navLink hidden">
+            <h4>Projects</h4>
+          </a>
+          <a href="#contact" class="navLink hidden">
+            <h4>Contact us</h4>
+          </a> -->
+        </div>
+      </div>
+
       <section id="aboutSection" data-name="about">
         <div class="container">
           <h2>About</h2>
@@ -55,35 +64,47 @@
           <div class="aboutSub">
             <div class="list">
               <div id="mission">
-                <h3>Mission</h3>
+                <div class="listTitle">
+                  <h3>Mission</h3>
+                </div>
                 <ul>
                   <li>
-                    Free people from uninspiring templated websites
+                    <p>
+                      Free people from uninspiring templated websites
+                    </p>
                   </li>
                   <li>
-                    Provide unique design solutions for each individual
+                    <p>Provide unique design solutions for each individual</p>
                   </li>
                   <li>
-                    Digitalize the future
+                    <p>Digitalize the future</p>
                   </li>
                 </ul>
               </div>
               <div id="vision">
-                <h3>Vision</h3>
+                <div class="listTitle">
+                  <h3>Vision</h3>
+                </div>
                 <ul>
                   <li>
-                    Increase customer online presence
+                    <p>Increase customer online presence</p>
                   </li>
                   <li>
-                    Provide new businesses with online platform they can rely on
+                    <p>
+                      Provide new businesses with online platform they can rely
+                      on
+                    </p>
                   </li>
-                  <li>Transform existing businesses into online platforms</li>
+                  <li>
+                    <p>Transform existing businesses into online platforms</p>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div class="contactBtn">
-              <a href="#contactBtn"> Contact us</a>
-            </div>
+
+            <a href="#contactSection" class="contactBtn">
+              <div>Contact us</div></a
+            >
           </div>
         </div>
       </section>
